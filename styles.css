@@ -25,12 +25,16 @@ main {
     height: 100vh;
 }
 
+#add-section {
+    margin-bottom: 10px;
+}
+
 #add-title {
     background-color: #6153CC;
     width: 100%;
     display: flex;
     justify-content: center;
-    border-radius: 2 2px 0 0;
+    border-radius: 2px 2px 0 0;
 }
 
 h3 {
@@ -68,4 +72,18 @@ input {
 #add:hover {
     background-color: #9A91DE;
     cursor: pointer;
+}
+
+#product-title {
+    background-color: #CE4760;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 2px 2px 0 0;
+}
+
+table {
+    border: 1px solid #CE4760;
+    width: 100%;
+    border-radius: 0 0px 2px 2px;
 }
