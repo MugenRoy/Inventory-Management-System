@@ -1,7 +1,15 @@
+require('dotenv').config();
+
 const express = require("express");
 const mongoose = require('mongoose');
 
 const app = express();
+app.use(express.static('public'));
+app.use(express.json());
+
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log('Connected'))
+    .catch(err => console.error('Error:', err));
 
 const productSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -12,22 +20,25 @@ const productSchema = new mongoose.Schema({
 
 const Product = mongoose.model('Product', productSchema);
 
-app.get("/products", (req, res) => {
-  const products = Product.find();
-  res.header("Access-Control-Allow-Origin", "*");
+app.get("/products", async (req, res) => {
+  const products = await Product.find();
   res.json(products);
 });
 
 
-app.post("/products", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+app.post("/products", async (req, res) => {
+    const product = new Product(req.body);
+    await product.save();
+    res.json(product);
 });
 
 
 app.put("/products/:id", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
 });
 
 app.delete("/products/:id", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+});
+
+app.listen(process.env.PORT, () => {
+    console.log("Server is listening");
 });
