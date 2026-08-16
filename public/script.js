@@ -1,6 +1,5 @@
 async function loadTable() {
     const res = await fetch("/products");
-    if (!res.ok) throw new Error("Failed to fetch products");
     const products = await res.json();
     const tbody = document.getElementById("table-body");
     tbody.innerHTML = "";
