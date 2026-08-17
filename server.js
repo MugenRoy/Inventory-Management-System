@@ -36,7 +36,9 @@ app.post("/products", async (req, res) => {
 app.put("/products/:id", (req, res) => {
 });
 
-app.delete("/products/:id", (req, res) => {
+app.delete("/products/:id", async (req, res) => {
+    await Product.findByIdAndDelete(req.params.id);
+    res.json({ message: "Item deleted successfully" });
 });
 
 app.listen(process.env.PORT, () => {

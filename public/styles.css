@@ -96,5 +96,39 @@ th, td {
     text-align: left;
     border-bottom: 1px solid #DDE0E3;
     border-right: 1px solid #DDE0E3;
+}
 
+#actions {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-delete {
+    margin-left: 5px;
+    padding: 5px;
+    background-color: #FF4000;
+    color: white;
+    border-radius: 2px;
+    font-family: "Poppins", monospace;
+    border: none;
+}
+
+.btn-delete:hover {
+    background-color: #FFB399;
+    cursor: pointer;
+}
+
+.btn-edit {
+    margin-right: 5px;
+    padding: 5px;
+    background-color: #4BAFBE;
+    color: white;
+    border-radius: 2px;
+    font-family: "Poppins", monospace;
+    border: none;
+}
+
+.btn-edit:hover {
+    background-color: #A5D7DF;
+    cursor: pointer;
 }

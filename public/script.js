@@ -13,12 +13,21 @@ async function loadTable() {
                 <td>${p.category}</td>
                 <td>${p.quantity}</td>
                 <td>$${p.price}</td>
-                <td></td>
+                <td id="actions">
+                    <button class="btn-edit" onclick="editItem('${p._id}', '${p.name}', '${p.category}', '${p.quantity}', '${p.price}')">Edit</button>
+                    <button class="btn-delete" onclick="deleteItem('${p._id}')">Delete</button>
+                </td>
             </tr>
         `;
     }
 }
 
+async function deleteItem(id) {
+    if (confirm('Are you sure you want to delete this item?')) {
+        await fetch("/products/"+id, { method: 'DELETE' });
+        loadTable();
+    }
+}
 
 async function addItem(event) {
   event.preventDefault();
@@ -39,3 +48,12 @@ async function addItem(event) {
 }
 
 loadTable();
+
+function editItem(id, name, category, quantity, price) {
+    document.getElementById('itemID').value = id;
+    document.getElementById('name').value = name;
+    document.getElementById('category').value = category;
+    document.getElementById('quantity').value = quantity;
+    document.getElementById('price').value = price;
+    document.getElementById('add').innerText = 'Update Item';
+}

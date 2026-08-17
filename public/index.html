@@ -13,9 +13,10 @@
         <main>
             <div id="add-section">
                 <div id="add-title">
-                    <h3>New Item</h3>
+                    <h3>Item</h3>
                 </div>
                 <form onsubmit="addItem(event)">
+                    <input type="hidden" id="itemID">
                     <input type="text" id="name" placeholder="Item Name" required>
                     <input type="text" id="category" placeholder="Category" required>
                     <input type="number" id="quantity" placeholder="Quantity" min="0" required>
