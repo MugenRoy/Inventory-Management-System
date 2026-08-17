@@ -30,21 +30,33 @@ async function deleteItem(id) {
 }
 
 async function addItem(event) {
-  event.preventDefault();
-  const item = {
-      name: document.getElementById('name').value,
-      category: document.getElementById('category').value,
-      quantity: document.getElementById('quantity').value,
-      price: document.getElementById('price').value
-  };
-  await fetch("/products", {
-        method: "POST",
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(item)
-    });
+    event.preventDefault();
+    const item = {
+        name: document.getElementById('name').value,
+        category: document.getElementById('category').value,
+        quantity: document.getElementById('quantity').value,
+        price: document.getElementById('price').value
+    };
+    const id = document.getElementById('itemID').value;
 
-   loadTable();
+    if (id) {
+        await fetch("/products/"+id, {
+            method: "PUT",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(item)
+        });
+    } else {
+        await fetch("/products", {
+            method: "POST",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(item)
+        });
+    }
 
+    loadTable();
+    document.getElementById('itemID').value = '';
+    document.getElementById('itemForm').reset();
+    document.getElementById('add').innerText = '+ Add Item';
 }
 
 loadTable();
@@ -55,5 +67,5 @@ function editItem(id, name, category, quantity, price) {
     document.getElementById('category').value = category;
     document.getElementById('quantity').value = quantity;
     document.getElementById('price').value = price;
-    document.getElementById('add').innerText = 'Update Item';
+    document.getElementById('add').innerText = "Update Item";
 }

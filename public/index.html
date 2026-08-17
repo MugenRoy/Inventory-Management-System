@@ -15,7 +15,7 @@
                 <div id="add-title">
                     <h3>Item</h3>
                 </div>
-                <form onsubmit="addItem(event)">
+                <form id="itemForm" onsubmit="addItem(event)">
                     <input type="hidden" id="itemID">
                     <input type="text" id="name" placeholder="Item Name" required>
                     <input type="text" id="category" placeholder="Category" required>
@@ -34,7 +34,7 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Category</th>
-                            <th>Stock</th>
+                            <th>Quantity</th>
                             <th>Price</th>
                             <th>Actions</th>
                         </tr>

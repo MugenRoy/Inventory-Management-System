@@ -33,7 +33,9 @@ app.post("/products", async (req, res) => {
 });
 
 
-app.put("/products/:id", (req, res) => {
+app.put("/products/:id", async (req, res) => {
+    const product = await Product.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.json(product);
 });
 
 app.delete("/products/:id", async (req, res) => {
