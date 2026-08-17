@@ -88,4 +88,13 @@ table {
     border: 1px solid #CE4760;
     width: 100%;
     border-radius: 0 0px 2px 2px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #DDE0E3;
+    border-right: 1px solid #DDE0E3;
+
 }
